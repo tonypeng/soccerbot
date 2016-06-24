@@ -1,0 +1,14 @@
+<?php
+// fill out values and rename file to Config.php, then `composer dump-autoload`
+class Config {
+    const FB_APP_ID = '<facebook app id>';
+    const FB_APP_SECRET = '<facebook app secret>';
+
+    const FB_ACCESS_TOKEN = '<a valid facebook access token with the `publish_actions` and `user_managed_groups` permissions>';
+    const FB_GROUP_ID = '<target facebook group fbid>';
+
+    const DB_HOST = '<database host>';
+    const DB_USERNAME = '<database username>';
+    const DB_PASSWORD = '<database password>';
+    const DB_NAME = '<database name>';
+}

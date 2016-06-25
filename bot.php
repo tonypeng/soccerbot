@@ -97,7 +97,7 @@ class Bot {
         if ($in_count >= $min_count) {
             vprintln('Threshold reached!');
             $params = [
-                'message' => 'Game on! '.$in_count.' people are in: '.natural_language_join($people_in),
+                'message' => "Game on! \u{26BD} ".$in_count.' people are in: '.natural_language_join($people_in).'.',
             ];
             $this->fb->post('/'.$post['id'].'/comments', $params);
             $stmt = $this->db->prepare('INSERT INTO tilted_posts (post_fbid) VALUES (:p)');
@@ -113,7 +113,10 @@ class Bot {
         $min_people = 8;
         foreach ($hashtags as $hashtag) {
             if (startsWith($hashtag, 'need')) {
-                $min_people = (int)$this->getCommandArgs($hashtag, 'need');
+				$arg = $this->getCommandArgs($hashtag, 'need');
+				if (ctype_digit($arg)) {
+					$min_people = (int)$this->getCommandArgs($hashtag, 'need');
+				}
             }
         }
         return [$min_people];
